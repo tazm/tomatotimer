@@ -17,12 +17,11 @@ public:
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 		COMMAND_ID_HANDLER(IDOK, OnOK)
 		COMMAND_ID_HANDLER(IDCANCEL, OnCancel)
-        CHAIN_MSG_MAP(CTrayIconImpl<CMainDlg>)
         COMMAND_ID_HANDLER_EX(ID_MENU_EXIT, OnExit)
-        COMMAND_ID_HANDLER_EX(ID_MENU_SHOW, OnShowMain)
         COMMAND_ID_HANDLER_EX(IDC_BTN_WORK, OnWork)
         COMMAND_ID_HANDLER_EX(IDC_BTN_BREAK, OnBreak)
         MSG_WM_TIMER(OnTimer)
+        CHAIN_MSG_MAP(CTrayIconImpl<CMainDlg>)
         REFLECT_NOTIFICATIONS()
 	END_MSG_MAP()
 
@@ -31,10 +30,10 @@ public:
 	LRESULT OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
     LRESULT OnExit(UINT uCode, int nID, HWND hwndCtrl);
-    LRESULT OnShowMain(UINT uCode, int nID, HWND hwndCtrl);
-
     LRESULT OnWork(UINT uCode, int nID, HWND hwndCtrl);
     LRESULT OnBreak(UINT uCode, int nID, HWND hwndCtrl);
+
+    int OnLButton(int type);
 
     void OnTimer(UINT_PTR id);
 private:

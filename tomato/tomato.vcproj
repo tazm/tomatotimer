@@ -235,6 +235,10 @@
 				RelativePath=".\stdafx.h"
 				>
 			</File>
+			<File
+				RelativePath=".\trayiconimpl.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"

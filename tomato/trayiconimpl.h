@@ -153,28 +153,7 @@ public:
 		}
 		else if (LOWORD(lParam) == WM_LBUTTONDBLCLK || LOWORD(lParam) == WM_LBUTTONDOWN)
 		{
-			// Make app the foreground
-			SetForegroundWindow(pT->m_hWnd);
-			// Load the menu
-			CMenu oMenu;
-			if (!oMenu.LoadMenu(m_nid.uID))
-				return 0;
-			// Get the sub-menu
-			CMenuHandle oPopup(oMenu.GetSubMenu(0));			
-			// Get the item
-			if (m_nDefault)
-			{
-				// Send
-				pT->SendMessage(WM_COMMAND, m_nDefault, 0);
-			}
-			else
-			{
-				UINT nItem = oPopup.GetMenuItemID(0);
-				// Send
-				pT->SendMessage(WM_COMMAND, nItem, 0);
-			}
-			// Done
-			oMenu.DestroyMenu();
+            pT->OnLButton(LOWORD(lParam));
 		}
 		return 0;
 	}

@@ -63,20 +63,6 @@ LRESULT CMainDlg::OnExit( UINT uCode, int nID, HWND hwndCtrl )
     return 0;
 }
 
-LRESULT CMainDlg::OnShowMain( UINT uCode, int nID, HWND hwndCtrl )
-{
-    if (!::IsWindowVisible(m_hWnd))
-        ::ShowWindow(m_hWnd, SW_SHOW);
-
-    if (::IsIconic(m_hWnd))
-        ::SendMessage(m_hWnd, WM_SYSCOMMAND, SC_RESTORE | HTCAPTION, 0);
-
-    ::BringWindowToTop(m_hWnd);
-    ::SetForegroundWindow(m_hWnd);
-
-    return 0;
-}
-
 LRESULT CMainDlg::OnWork( UINT uCode, int nID, HWND hwndCtrl )
 {
     InstallIcon(L"∑¨«— ±÷”", hIconSmall_, IDR_POP, true);
@@ -178,4 +164,17 @@ void CMainDlg::OnTimer( UINT_PTR id )
     tip += time_text;
 
     SetTooltipText(tip.c_str());
+}
+
+int CMainDlg::OnLButton( int type )
+{
+    if (!::IsWindowVisible(m_hWnd))
+        ::ShowWindow(m_hWnd, SW_SHOW);
+
+    if (::IsIconic(m_hWnd))
+        ::SendMessage(m_hWnd, WM_SYSCOMMAND, SC_RESTORE | HTCAPTION, 0);
+
+    ::BringWindowToTop(m_hWnd);
+    ::SetForegroundWindow(m_hWnd);
+    return 0;
 }

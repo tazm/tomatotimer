@@ -27,7 +27,7 @@ LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 //
 
 IDD_MAINDLG DIALOGEX 0, 0, 145, 73
-STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU
 CAPTION "∑¨«— ±÷”"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
@@ -75,10 +75,11 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
+            VALUE "CompanyName", "tazm@foxmail.com"
             VALUE "FileDescription", "∑¨«— ±÷”"
             VALUE "FileVersion", "1, 0, 0, 0"
             VALUE "InternalName", "tomato"
-            VALUE "LegalCopyright", "Copyright 2015"
+            VALUE "LegalCopyright", "Copyright 2015 tazm@foxmail.com"
             VALUE "OriginalFilename", "tomato.exe"
             VALUE "ProductName", "tomato Module"
             VALUE "ProductVersion", "1, 0, 0, 0"
@@ -100,7 +101,6 @@ IDR_POP MENU
 BEGIN
     POPUP "test"
     BEGIN
-        MENUITEM "œ‘ æ",                          ID_MENU_SHOW
         MENUITEM "ÕÀ≥ˆ",                          ID_MENU_EXIT
     END
 END
@@ -127,6 +127,15 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
 #endif //_WIN32
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\tomato.ico"
+
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -151,15 +160,6 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Icon
-//
-
-// Icon with lowest ID value placed first to ensure application icon
-// remains consistent on all systems.
-IDR_MAINFRAME           ICON                    "res\\tomato.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
