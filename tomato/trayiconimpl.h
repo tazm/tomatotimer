@@ -21,6 +21,7 @@ class CTrayIconImpl
 {
 private:
 	UINT WM_TRAYICON;
+    UINT WM_TASKBARCREATE;
 	CNotifyIconData m_nid;
 	bool m_bInstalled;
 	UINT m_nDefault;
@@ -28,6 +29,7 @@ public:
 	CTrayIconImpl() : m_bInstalled(false), m_nDefault(0)
 	{
 		WM_TRAYICON = ::RegisterWindowMessage(_T("WM_TRAYICON"));
+        WM_TASKBARCREATE = RegisterWindowMessage(L"TaskbarCreated");;
 	}
 	
 	~CTrayIconImpl()
@@ -115,7 +117,17 @@ public:
 
 	BEGIN_MSG_MAP(CTrayIcon)
 		MESSAGE_HANDLER(WM_TRAYICON, OnTrayIcon)
+        MESSAGE_HANDLER(WM_TASKBARCREATE, OnTaskbarCreate)
 	END_MSG_MAP()
+
+    LRESULT OnTaskbarCreate(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
+    {
+        if (m_bInstalled)
+        {
+            m_bInstalled = Shell_NotifyIcon(NIM_ADD, &m_nid);
+        }
+        return 0;
+    }
 
 	LRESULT OnTrayIcon(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
 	{

@@ -46,4 +46,6 @@ private:
 
     HICON hIconSmall_;
     HICON hIconSmall2_;
+
+    UINT m_nMsgTaskbarCreated;
 };
